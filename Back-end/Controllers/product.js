@@ -80,7 +80,7 @@ exports.update = async (req, res) => {
         if (req.files && req.files.file2) {
             newData.file2 = req.files.file2[0].filename; 
             if (newData.fileold) {
-                await fs.unlink('./uploads/' + newData.fileold, (err) => {
+                await fs.unlink('../frontend/public/uploads/' + newData.fileold, (err) => {
                     if (err) {
                         console.error("Error deleting old file:", err);
                     } else {
@@ -113,7 +113,7 @@ exports.remove = async (req, res) => {
         const removed = await Product.findOneAndDelete({ _id: id }).exec()
 
         if (removed?.file) {
-            await fs.unlink('./uploads/' + removed.file, (err) => {
+            await fs.unlink('../frontend/public/uploads/' + removed.file, (err) => {
                 if (err) {
                     console.log(err)
                 } else {
